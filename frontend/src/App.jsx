@@ -1,14 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
 import { LIGHT_THEME, DARK_THEME } from "./theme";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import { useSelector } from "react-redux";
-
-import CompanySpecific from "./pages/CompanySpecific/CompanySpecific";
-import AptitudeTest from "./pages/AptitudeTest/AptitudeTest";
-import TechnicalTest from "./pages/TechnicalTest/TechnicalTest";
-import MockTest from "./pages/MockTest/MockTest";
+import ChooseCodingQuestions from "./component/ChooseCodingQuestions/chooseCodingQuestions";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -178,12 +174,126 @@ button {
 
 function App() {
   const { name } = useSelector((state) => state.theme);
+  const { token } = useSelector((state) => state.auth);
+
+  const [selectedProblems, setSelectedProblems] = useState([]);
+  const addDetailsToLocalStorage = () => {
+    localStorage.setItem(
+      "refreshToken",
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5NzQ1MDhiMmU4Y2M1NWI5MTk0ZTFkZCIsImlhdCI6MTc3MjQ0MTY5NSwiZXhwIjoxNzczMDQ2NDk1fQ._22fmIoiYgNDDZ2JThQSA29x3tCGCte0YGktUhrcb0M",
+    );
+    localStorage.setItem(
+      "token",
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1lZW5ha3NoaUBnbWFpbC5jb20iLCJpZCI6IjY5NzQ1MDhiMmU4Y2M1NWI5MTk0ZTFkZCIsImFjY291bnRUeXBlIjoiQWRtaW4iLCJjb2xsZWdlTmFtZSI6Ik1FRU5BS1NISSBTVU5EQVJBUkFKQU4gRU5HSU5FRVJJTkcgQ09MTEVHRSwgQ2hlbm5haSIsImlhdCI6MTc3MjUyODkwMSwiZXhwIjoxNzcyNjE1MzAxfQ.2RWAK3mrC5clkCwN9NJemAuvOh590plZ8m8VYUACncQ",
+    );
+    localStorage.setItem(
+      "user",
+      JSON.stringify({
+        _id: "6974508b2e8cc55b9194e1dd",
+        firstName: "Meenakshi Sundararajan Engineering College",
+        lastName: "Placement Cell",
+        collegeName: "MEENAKSHI SUNDARARAJAN ENGINEERING COLLEGE, Chennai",
+        email: "meenakshi@gmail.com",
+        mobileNumber: 5645834734,
+        countryCode: "+91",
+        courseAccess: [
+          {
+            _id: "6974526abb4ad429c1eb4892",
+            year: "2027",
+            ugorpg: "UG",
+            practiceTest: "Aptitude+Technical",
+            elearningTest: "none",
+            validityTill: "2026-03-18T00:00:00.000Z",
+            duration: 30,
+            departments: [
+              "CSE",
+              "MECH",
+              "EEE",
+              "IT",
+              "CIVIL",
+              "ECE",
+              "CYBER SECURITY",
+              "AI&DS",
+              "CSE-AIML",
+            ],
+            aptitudeTestsBehaviour: "LOCKED",
+            aptitudeELearningTestsBehaviour: "LOCKED",
+            technicalTestsBehaviour: "LOCKED",
+            technicalELearningTestsBehaviour: "LOCKED",
+            companies: [],
+            admin: "6974508b2e8cc55b9194e1dd",
+            createdAt: "2026-01-24T05:02:34.812Z",
+            updatedAt: "2026-01-24T14:38:08.397Z",
+            __v: 0,
+          },
+          {
+            _id: "6985fb83e5e8534b17fe4812",
+            year: "2029",
+            ugorpg: "UG",
+            practiceTest: "Aptitude+Technical",
+            elearningTest: "none",
+            validityTill: "2026-02-18T00:00:00.000Z",
+            duration: -44,
+            departments: [
+              "CSE",
+              "MECH",
+              "EEE",
+              "IT",
+              "CIVIL",
+              "ECE",
+              "CHEMICAL",
+              "CYBER SECURITY",
+              "AI&DS",
+              "CSE-AIML",
+            ],
+            aptitudeTestsBehaviour: "LOCKED",
+            aptitudeELearningTestsBehaviour: "LOCKED",
+            technicalTestsBehaviour: "LOCKED",
+            technicalELearningTestsBehaviour: "LOCKED",
+            admin: "6974508b2e8cc55b9194e1dd",
+            createdAt: "2026-02-06T14:32:35.442Z",
+            updatedAt: "2026-02-21T05:55:22.519Z",
+            __v: 0,
+          },
+        ],
+        accountType: "Admin",
+        active: true,
+        totalTabSwitches: 3,
+        languages: ["java"],
+        listOfStudentsRequests: [],
+        listOfStudents: [],
+        listOfAptitudeTestsByAdmin: [],
+        listOfTechnicalTestsByAdmin: [],
+        adminLabTests: [],
+        adminAssignments: [],
+        scheduledAptitudeTestsByAdmin: [],
+        scheduledTechnicalTestsByAdmin: [],
+        scheduledMockInterviewTestsByAdmin: [],
+        deactivateStudents: false,
+        __v: 0,
+        token:
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1lZW5ha3NoaUBnbWFpbC5jb20iLCJpZCI6IjY5NzQ1MDhiMmU4Y2M1NWI5MTk0ZTFkZCIsImFjY291bnRUeXBlIjoiQWRtaW4iLCJjb2xsZWdlTmFtZSI6Ik1FRU5BS1NISSBTVU5EQVJBUkFKQU4gRU5HSU5FRVJJTkcgQ09MTEVHRSwgQ2hlbm5haSIsImlhdCI6MTc3MjQ0MTY5NSwiZXhwIjoxNzcyNTI4MDk1fQ.qEokRMp_CWpqbk_PoqxfdjkGo1yTM0C0pKd-k-2qnTI",
+      }),
+    );
+  };
+
+  addDetailsToLocalStorage();
+
   return (
     <ThemeProvider theme={name === "LIGHT" ? LIGHT_THEME : DARK_THEME}>
       <GlobalStyle />
       <Router>
         <Routes>
-          <Route path="/" element={<h1>Assessment Form</h1>} />
+          <Route
+            path="/"
+            element={
+              <ChooseCodingQuestions
+                token={token}
+                selectedProblems={selectedProblems}
+                setSelectedProblems={setSelectedProblems}
+              />
+            }
+          />
         </Routes>
       </Router>
     </ThemeProvider>
