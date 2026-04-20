@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import { useSelector } from "react-redux";
 import ChooseCodingQuestions from "./component/ChooseCodingQuestions/chooseCodingQuestions";
+import UnderMaintainancePage from "./pages/UnderMaintainancePage/UnderMaintainancePage";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -294,6 +295,7 @@ function App() {
               />
             }
           />
+          <Route path="/undermaintainance" element={<UnderMaintainancePage/>} />
         </Routes>
       </Router>
     </ThemeProvider>
