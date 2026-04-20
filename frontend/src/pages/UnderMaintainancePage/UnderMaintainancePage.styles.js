@@ -81,7 +81,7 @@ export const Title = styled.h1`
 export const Description = styled.p`
   margin: 0.75rem auto 1.5rem;
   max-width: 620px;
-  font-size: 0.875rem;
+  font-size: 1rem;
   line-height: 1.6;
   color: ${({ theme }) => theme.grey_text};
 
@@ -157,7 +157,6 @@ export const TimerDigit = styled.span`
 `;
 
 export const TimerLabel = styled.span`
-  margin-top: 0.55rem;
   font-family: Roboto;
   font-weight: 400;
   font-style: normal;
