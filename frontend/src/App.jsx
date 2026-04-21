@@ -285,17 +285,7 @@ function App() {
       <GlobalStyle />
       <Router>
         <Routes>
-          <Route
-            path="/"
-            element={
-              <ChooseCodingQuestions
-                token={token}
-                selectedProblems={selectedProblems}
-                setSelectedProblems={setSelectedProblems}
-              />
-            }
-          />
-          <Route path="/undermaintainance" element={<UnderMaintainancePage/>} />
+          <Route path="/" element={<UnderMaintainancePage />} />
         </Routes>
       </Router>
     </ThemeProvider>
