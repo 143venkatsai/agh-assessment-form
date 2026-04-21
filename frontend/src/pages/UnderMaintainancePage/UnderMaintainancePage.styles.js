@@ -11,6 +11,39 @@ export const flipDown = keyframes`
   }
 `;
 
+export const flipUp = keyframes`
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+`;
+export const DigitWrapper = styled.span`
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  height: 1em;
+  width: 0.5em; /* slightly bigger for consistency */
+`;
+
+export const Digit = styled.span`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+
+  &.enter {
+    animation: ${flipDown} 0.4s ease-out forwards;
+  }
+
+  &.exit {
+    animation: ${flipUp} 0.4s ease-out forwards;
+  }
+`;
 export const Container = styled.main`
   min-height: 100vh;
   display: flex;
@@ -138,14 +171,13 @@ export const TimerCard = styled.div`
 `;
 
 export const TimerValue = styled.span`
-  display: block;
+  display: flex;          
+  justify-content: center;
+  align-items: center;
   font-family: Roboto;
   font-weight: 700;
-  font-style: normal;
   font-size: clamp(32px, 4vw, 64px);
-  leading-trim: none;
-  line-height: 100%;
-  letter-spacing: 0%;
+  line-height: 1;
   color: ${({ theme }) => theme.link_sky_blue};
 `;
 

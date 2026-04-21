@@ -10,19 +10,36 @@ import {
   TimerValue,
   TimerDigit,
   TimerLabel,
+  DigitWrapper,
+  Digit,
 } from "./UnderMaintainancePage.styles";
 
 const TimerValueDisplay = ({ value }) => {
-  const digits = value.split("");
+  const [prev, setPrev] = useState(value);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setPrev(value);
+    }, 400); // match animation duration
+
+    return () => clearTimeout(timeout);
+  }, [value]);
+
   return (
     <TimerValue>
-      {digits.map((digit, idx) => (
-        <TimerDigit key={`${idx}-${digit}`}>{digit}</TimerDigit>
-      ))}
+      {value.split("").map((digit, idx) => {
+        const prevDigit = prev[idx];
+
+        return (
+          <DigitWrapper key={idx}>
+            {prevDigit !== digit && <Digit className="exit" key={`exit-${idx}-${prevDigit}`}>{prevDigit}</Digit>}
+            <Digit className="enter" key={`enter-${idx}-${digit}`}>{digit}</Digit>
+          </DigitWrapper>
+        );
+      })}
     </TimerValue>
   );
 };
-
 export default function UnderMaintainancePage({ initialCountdown = 1545 }) {
   const [secondsLeft, setSecondsLeft] = useState(initialCountdown);
 
