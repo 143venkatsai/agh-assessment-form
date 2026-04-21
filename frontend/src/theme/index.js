@@ -1,5 +1,7 @@
 // theme/index.js
 export const LIGHT_THEME = {
+  grey_text: "#7B7A7A",
+  card_text_heading: "#212121",
   link_sky_blue: "#3C9BD9",
   mode: "LIGHT",
   blue_900: "#1500FF",
@@ -138,6 +140,8 @@ export const LIGHT_THEME = {
 };
 
 export const DARK_THEME = {
+  grey_text: "#C5C5C5",
+  card_text_heading: "#ffffff",
   link_sky_blue: "#3C9BD9",
   mode: "DARK",
   blue_900: "#FFFFFF",
