@@ -2,7 +2,7 @@ import styled, { keyframes } from "styled-components";
 
 export const flipDown = keyframes`
   0% {
-    transform: translateY(-100%);
+    transform: translateY(-68%);
     opacity: 0;
   }
   100% {
@@ -17,16 +17,17 @@ export const flipUp = keyframes`
     opacity: 1;
   }
   100% {
-    transform: translateY(100%);
+    transform: translateY(68%);
     opacity: 0;
   }
 `;
+
 export const DigitWrapper = styled.span`
   position: relative;
   display: inline-block;
   overflow: hidden;
-  height: 1em;
-  width: 0.6em; 
+  height: 1.22em;
+  width: 0.6em;
 `;
 
 export const Digit = styled.span`
@@ -35,6 +36,7 @@ export const Digit = styled.span`
   left: 0;
   width: 100%;
   text-align: center;
+  line-height: 1.22em;
 
   &.enter {
     animation: ${flipDown} 0.4s ease-out forwards;
@@ -135,16 +137,16 @@ export const TimerGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, clamp(91px, 14vw, 440.8px));
   gap: clamp(2px, 4vw, 56px);
+  width: fit-content;
+  margin: 1rem auto 0;
   justify-items: center;
-  margin-top: 1rem;
+  justify-content: center;
 
   @media (min-width: 1024px) {
     display: flex;
     gap: 56px;
-    width: 440.8px;
-    height: 117px;
-    top: 144px;
-    left: 72.6px;
+    width: fit-content;
+    margin: 1rem auto 0;
   }
 `;
 
@@ -163,29 +165,52 @@ export const TimerCard = styled.div`
   }
 
   @media (min-width: 1024px) {
-    width: 440.8px;
-    height: 117px;
     min-height: auto;
     padding: 1.4rem 1rem;
   }
 `;
 
 export const TimerValue = styled.span`
-  display: flex;          
+  position: relative;
+  display: flex;
   justify-content: center;
   align-items: center;
+  gap: 0.04em;
+  padding: 0.12em 0.18em;
   font-family: Roboto;
   font-weight: 700;
   font-size: clamp(32px, 4vw, 64px);
   line-height: 1;
   color: ${({ theme }) => theme.link_sky_blue};
-`;
 
-export const TimerDigit = styled.span`
-  display: inline-block;
-  overflow: hidden;
-  height: 1em;
-  animation: ${flipDown} 0.4s ease-out;
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 0.3em;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  &::before {
+    top: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.95) 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  }
+
+  &::after {
+    bottom: 0;
+    background: linear-gradient(
+      to top,
+      rgba(255, 255, 255, 0.95) 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  }
 `;
 
 export const TimerLabel = styled.span`

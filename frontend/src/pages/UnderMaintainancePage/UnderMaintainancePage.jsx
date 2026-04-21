@@ -8,7 +8,6 @@ import {
   TimerGrid,
   TimerCard,
   TimerValue,
-  TimerDigit,
   TimerLabel,
   DigitWrapper,
   Digit,
