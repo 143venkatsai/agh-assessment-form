@@ -26,7 +26,7 @@ export const DigitWrapper = styled.span`
   display: inline-block;
   overflow: hidden;
   height: 1em;
-  width: 0.5em; /* slightly bigger for consistency */
+  width: 0.6em; 
 `;
 
 export const Digit = styled.span`
