@@ -32,8 +32,14 @@ const TimerValueDisplay = ({ value }) => {
 
         return (
           <DigitWrapper key={idx}>
-            {prevDigit !== digit && <Digit className="exit" key={`exit-${idx}-${prevDigit}`}>{prevDigit}</Digit>}
-            <Digit className="enter" key={`enter-${idx}-${digit}`}>{digit}</Digit>
+            {prevDigit !== digit && (
+              <Digit className="exit" key={`exit-${idx}-${prevDigit}`}>
+                {prevDigit}
+              </Digit>
+            )}
+            <Digit className="enter" key={`enter-${idx}-${digit}`}>
+              {digit}
+            </Digit>
           </DigitWrapper>
         );
       })}
